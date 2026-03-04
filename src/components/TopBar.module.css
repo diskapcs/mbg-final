@@ -1,0 +1,42 @@
+.topbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 28px;
+  background: linear-gradient(90deg, #1a4d2e, #2d7a4f);
+  position: sticky;
+  top: 0;
+  z-index: 200;
+  box-shadow: 0 2px 20px rgba(0, 0, 0, 0.45);
+}
+
+.title {
+  font-family: 'Syne', sans-serif;
+  font-size: 18px;
+  font-weight: 800;
+  color: #fff;
+  letter-spacing: -0.5px;
+}
+
+.highlight {
+  color: #7debb0;
+}
+
+.hint {
+  font-size: 11px;
+  color: rgba(255, 255, 255, 0.65);
+  font-weight: 500;
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  padding: 5px 14px;
+  border-radius: 20px;
+}
+
+@media (max-width: 600px) {
+  .hint {
+    display: none;
+  }
+  .title {
+    font-size: 14px;
+  }
+}

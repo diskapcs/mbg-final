@@ -1,0 +1,24 @@
+.wrapper {
+  position: relative;
+  display: block;
+  max-width: 1400px;
+  margin: 24px auto;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 8px 48px rgba(0, 0, 0, 0.6);
+  user-select: none;
+}
+
+.image {
+  width: 100%;
+  height: auto;
+  display: block;
+  pointer-events: none;
+}
+
+@media (max-width: 768px) {
+  .wrapper {
+    margin: 12px;
+    border-radius: 10px;
+  }
+}
