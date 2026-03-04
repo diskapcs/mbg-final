@@ -1,78 +1,32 @@
-import styles from './ModalContent.module.css'
+import styles from "./ModalContent.module.css";
 
 /**
  * ModalContent
- * Renders the detailed content sections inside the modal:
- *  - Overview
- *  - Step-by-step breakdown
- *  - Outputs
- *  - Technical details grid
+ * Renders the detailed content inside the modal.
+ * Displays image from public/SPPG-{id}.png
  *
  * Props:
  *  flow {object} – a single flow entry from flows.js
  */
 export default function ModalContent({ flow }) {
-  const { color, overview, steps, outputs, extras } = flow
+  const { id } = flow;
+
+  // Mapping: id 1-9 corresponds to SPPG-1.png through SPPG-9.png
+  const imagePath = `/SPPG-${id}.png`;
 
   return (
     <div className={styles.body}>
-      {/* Overview */}
-      <section className={styles.section}>
-        <div className={styles.sectionLabel}>📌 Overview</div>
-        <p className={styles.overviewText}>{overview}</p>
-      </section>
-
-      {/* Steps */}
-      <section className={styles.section}>
-        <div className={styles.sectionLabel}>🔢 Langkah-Langkah</div>
-        <ul className={styles.stepList}>
-          {steps.map((s) => (
-            <li key={s.num} className={styles.stepItem}>
-              <span
-                className={styles.stepNum}
-                style={{ background: color.badge, color: color.accent }}
-              >
-                {s.num}
-              </span>
-              <span>{s.text}</span>
-            </li>
-          ))}
-        </ul>
-      </section>
-
-      {/* Outputs */}
-      <section className={styles.section}>
-        <div className={styles.sectionLabel}>✅ Output / Hasil</div>
-        {outputs.map((o, i) => (
-          <div
-            key={i}
-            className={styles.outputItem}
-            style={{ background: color.bg, borderLeftColor: color.accent }}
-          >
-            <span className={styles.outputIcon}>{o.icon}</span>
-            <span>{o.text}</span>
-          </div>
-        ))}
-      </section>
-
-      {/* Technical details */}
-      <section className={styles.section}>
-        <div className={styles.sectionLabel}>📋 Detail Teknis</div>
-        <div className={styles.detailGrid}>
-          {extras.map((e, i) => (
-            <div
-              key={i}
-              className={styles.detailBox}
-              style={{ background: color.bg }}
-            >
-              <div className={styles.detailLabel}>{e.label}</div>
-              <div className={styles.detailValue} style={{ color: color.accent }}>
-                {e.value}
-              </div>
-            </div>
-          ))}
-        </div>
-      </section>
+      <div className={styles.imageContainer}>
+        <img
+          src={imagePath}
+          alt={flow.title}
+          className={styles.contentImage}
+          onError={(e) => {
+            e.target.style.display = "none";
+            console.warn(`Image not found: ${imagePath}`);
+          }}
+        />
+      </div>
     </div>
-  )
+  );
 }

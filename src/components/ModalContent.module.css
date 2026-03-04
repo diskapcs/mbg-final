@@ -2,6 +2,21 @@
   padding: 0 32px 32px;
 }
 
+.imageContainer {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px;
+}
+
+.contentImage {
+  max-width: 100%;
+  height: auto;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
 .section {
   margin-bottom: 22px;
 }
